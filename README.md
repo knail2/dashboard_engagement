@@ -1,7 +1,6 @@
 # Dashboard Engagement Project
 
-Author: Omer Ansari
-
+##### Author: Omer Ansari
 Initialize date: 5.27.24
 
 
@@ -33,21 +32,47 @@ If robust APIs exist for the dashboard, the backing database and the API platfor
 
 Then, replacing the technologies with any others would be straightforward since the actual interaction with these back end systems will be coded by these brilliant LLMs.
 
-However, we have to start somewhere, so I have chosen a few backend technologies to ground this testing. I have however done some rudimentary assessment on where this project can be expanded into other technologies and linked those below
+However, we have to start somewhere, so I have chosen a few backend technologies to ground this testing. I have however done some rudimentary assessment using GPT on where this project can be expanded into other technologies and linked those below
 
 ### Tech used
 
-- **Dashboard platform:** Tableau. _other [possibilities](dashbard_platforms.md)_
-- **API platform:** Mulesoft. _other [possibilities](api_platforms.md)_
-- **Backing database:** Snowflake.  _other [possibilities](db_platforms.md)_
+- **Dashboard platform:** Tableau. _other [possibilities](docs/dashbard_platforms.md)_
+- **API platform:** Mulesoft. _other [possibilities](docs/api_platforms.md)_
+- **Backing database:** Snowflake.  _other [possibilities](docs/db_platforms.md)_
 
 
-### API spec and Software Design
+### API spec
 
-I interacted with the Software Architect GPT (By V B Wickramasinghe) available as one of the many fine-tuned models within chatgpt.com (available if you have a paid subscription) . I suspect I'd have gotten similar output interacting with the generic pre-trained model as well, but likely would have had to spend a lot more turns to get it right.
+Here, I've shown a possible sample API specification and well as implementation steps and milestones. This took about 45 minutes total, and I didn't fine tune the project plan too much. it did give me a general idea to create my todo [list](todo.md) which is what i'm really keying off of to create this project.
 
-- API [specification](api_spec.md)
-- Software [architecture](sw_arch.md)
+To create these, I interacted with the Software Architect GPT (By V B Wickramasinghe) available as one of the many fine-tuned models within chatgpt.com (available if you have a paid subscription). I suspect I'd have gotten similar output interacting with the generic pre-trained model as well, but likely would have had to spend a lot more turns to get it right.
 
-To create the diagram in the software architecture, I used Tim Kitchen's [video](https://www.youtube.com/watch?v=YaqXF5UeRQE) where he shows how to use GPT to build software design documents using plantuml and then feed them to draw.io.
+- API [specification](docs/api_spec.md)
+- Generic Project [implementation steps and milestones](docs/milestones.md)
 
+
+### Software Design
+
+The following is a basic diagram to illustrate the architecture of the API application that interfaces with the Tableau platform and utilizes Snowflake for storage. This diagram will include the main components such as the MuleSoft API layer, the Tableau Server, and the Snowflake database, showing how they interact.
+
+![Software Design](images/sw_arch.png)
+_Created from this [plantUML](docs/sw_arch.puml)_
+
+To create the diagram in the software architecture, I used Tim Kitchen's excellent youtube [video](https://www.youtube.com/watch?v=YaqXF5UeRQE) where he shows how to use GPT to build software design documents using plantuml and then feed them to draw.io.
+
+
+### Explanation of Diagram Components:
+
+- **Client Applications**: Represents the front-end applications or other systems that will be consuming the API. This could include internal operational tools, dashboard management interfaces, etc.
+
+- **MuleSoft API Layer**: The core of the system, where all the logic for interfacing with Tableau and Snowflake is implemented. This includes:
+  - **Authentication Service**: Manages client authentication and authorization.
+  - **Dashboard Management**: Handles requests related to dashboard data fetching and analysis.
+  - **User Management**: Manages user data fetching and manipulation.
+  - **Usage Statistics**: Processes and provides statistics on dashboard usage and user activity.
+
+- **Tableau Server**: This is where the Tableau dashboards are hosted. The API layer interacts with Tableau to retrieve dashboard data and metadata.
+
+- **Snowflake Database**: Used for storing detailed logs, user information, and other persistent data necessary for historical analysis and data lineage.
+
+This diagram provides a visual breakdown of how each component of the API interacts with others, supporting better understanding and communication among stakeholders involved in the project.
