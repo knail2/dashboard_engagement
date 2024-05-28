@@ -1,7 +1,7 @@
 # Dashboard Engagement Project
 
 ##### Author: Omer Ansari
-Initialize date: 5.27.24
+##### Initialize date: 5.27.24
 
 
 
@@ -10,6 +10,10 @@ The code repository where I document the experience and learnings from developin
 Specifically, this software project is focused on building out an API which serves engagement statistics of dashboards used by a firm for useful operational and analytical purposes.
 
 This project has been opensourced under the Apache license.
+
+
+![Multi-Agent-Framework  Software Design](images/maf_arch.png)
+_Multi-Agent-Framework SW Design Created from this [plantUML](docs/maf_orch.puml)_
 
 
 ### Business Goal: 
@@ -27,6 +31,15 @@ I anticipate that there is specific amount of pre-work required to be done by hu
 
 Back to this project:
 
+
+### Overall Software Design
+
+![Software Design](images/maf_arch.png)
+_SW Design Created from this [plantUML](docs/maf_orch.puml)_
+
+I designed this plantUML initially by prompting GPT4, and then fine-tuning the resulting plantUML file until I got the connections right.
+
+
 ### Hypothesis of this project
 If robust APIs exist for the dashboard, the backing database and the API platform (and the pre-work has been done to to make these LLM MAFs useful), we can let these MAFs explore, test, and deploy these APIs themselves with a little human tuning along the way. 
 
@@ -39,6 +52,7 @@ However, we have to start somewhere, so I have chosen a few backend technologies
 - **Dashboard platform:** Tableau. _other [possibilities](docs/dashbard_platforms.md)_
 - **API platform:** Mulesoft. _other [possibilities](docs/api_platforms.md)_
 - **Backing database:** Snowflake.  _other [possibilities](docs/db_platforms.md)_
+- **Multi-Agent framework:** Agentlite. _other [possibilities](docs/mafs.md)_
 
 
 ### API spec
@@ -51,12 +65,13 @@ To create these, I interacted with the Software Architect GPT (By V B Wickramasi
 - Generic Project [implementation steps and milestones](docs/milestones.md)
 
 
-### Software Design
+### Software Design for Project
 
 The following is a basic diagram to illustrate the architecture of the API application that interfaces with the Tableau platform and utilizes Snowflake for storage. This diagram will include the main components such as the MuleSoft API layer, the Tableau Server, and the Snowflake database, showing how they interact.
 
 ![Software Design](images/sw_arch.png)
-_Created from this [plantUML](docs/sw_arch.puml)_
+_SW Design Created from this [plantUML](docs/sw_arch.puml)_
+
 
 To create the diagram in the software architecture, I used Tim Kitchen's excellent youtube [video](https://www.youtube.com/watch?v=YaqXF5UeRQE) where he shows how to use GPT to build software design documents using plantuml and then feed them to draw.io.
 
@@ -76,3 +91,35 @@ To create the diagram in the software architecture, I used Tim Kitchen's excelle
 - **Snowflake Database**: Used for storing detailed logs, user information, and other persistent data necessary for historical analysis and data lineage.
 
 This diagram provides a visual breakdown of how each component of the API interacts with others, supporting better understanding and communication among stakeholders involved in the project.
+
+
+### Design for the Multi-Agent-Framework developing the application
+
+The above was the software that this project is striving to create. In this section, what you see is the actual multi-agent-framework which will be used to develop this application
+
+![Multi-Agent-Framework  Software Design](images/maf_arch.png)
+_Multi-Agent-Framework SW Design Created from this [plantUML](docs/maf_orch.puml)_
+
+### AI Engineer
+- Crafts Prompt: Creates and manages user stories.
+
+### Client Applications
+The frontend interface for user interactions.
+
+### Multi-Agent Framework (MAF)
+- **Product Manager Agent**: Breaks down work and creates plans.
+- **Critique Agent**: Reviews and critiques the plans.
+- **LLM QA Agent**: Ensures the quality of the code.
+- **LLM Coder Agent**: Tests APIs, writes code, writes test code, and calls helper functions.
+- **User Proxy Agent**: Manages agents, consolidates results, and presents results back to the AI Engineer.
+
+### Systems
+- **Mulesoft**: Provides an API Gateway and Authentication Service.
+- **Tableau**: Manages dashboards and provides usage statistics.
+- **Snowflake**: Offers data storage and enables historical data analysis.
+- **Airflow (Future)**: Manages task scheduling and workflow management.
+
+### Interactions
+The AI Engineer crafts prompts and initiates projects through the User Proxy Agent. The User Proxy Agent manages interactions with the Product Manager Agent, who breaks down the work and creates plans. These plans are sent to the Critique Agent for feedback, then finalized and passed to the LLM Coder Agent for coding. The LLM QA Agent reviews the code for quality, and the final code is sent back to the Product Manager Agent and then to the User Proxy Agent, who consolidates and presents the results back to the AI Engineer.
+
+The LLM Coder Agent interacts with Mulesoft by writing RAML for API authoring, retrieves data through Tableau, stores and queries data with Snowflake, and schedules tasks with Airflow. Mulesoft acts as the API Gateway connecting to both Tableau and Snowflake, while Airflow interacts with Mulesoft for running batch jobs to extract date from Tableau and store in a persistent database. Client Applications interface directly with Mulesoft for user interactions.
