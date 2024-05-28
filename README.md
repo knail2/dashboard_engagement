@@ -41,7 +41,7 @@ However, we have to start somewhere, so I have chosen a few backend technologies
 
 ### Tech used
 
-- **Dashboard platform:** Tableau. _other [possibilities](docs/dashbard_platforms.md)_
+- **Dashboard platform:** Tableau. _other [possibilities](docs/dashboard_platforms.md)_
 - **API platform:** Mulesoft. _other [possibilities](docs/api_platforms.md)_
 - **Backing database:** Snowflake.  _other [possibilities](docs/db_platforms.md)_
 - **Multi-Agent framework:** Agentlite. _other [possibilities](docs/mafs.md)_
