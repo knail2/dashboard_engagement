@@ -32,14 +32,6 @@ I anticipate that there is specific amount of pre-work required to be done by hu
 Back to this project:
 
 
-### Overall Software Design
-
-![Software Design](images/maf_arch.png)
-_SW Design Created from this [plantUML](docs/maf_orch.puml)_
-
-I designed this plantUML initially by prompting GPT4, and then fine-tuning the resulting plantUML file until I got the connections right.
-
-
 ### Hypothesis of this project
 If robust APIs exist for the dashboard, the backing database and the API platform (and the pre-work has been done to to make these LLM MAFs useful), we can let these MAFs explore, test, and deploy these APIs themselves with a little human tuning along the way. 
 
