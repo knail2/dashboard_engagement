@@ -342,35 +342,4 @@ Here are all the endpoints specified in this API spec based on MoSCoW prioritiza
   ```bash
   curl -X POST "http://auth.example.com/oauth/token" -d "grant_type=client_credentials&client_id={client_id}&client_secret={client_secret}"
   ```
-  This POST request returns an access token which is then
-
- used in the Authorization header for subsequent API requests.
-
-
-
-## API interaction and components
-
-
-## architecture diagram
-
-![TabUtilizationArchDiagram](images/tab_utilization_drawio.png)
-
-### PlantUML Code for the API Application Architecture
-
-Here's the same architecture above depicted in a PlantUML format describing the overall architecture:
-
-### Explanation of Diagram Components:
-
-- **Client Applications**: Represents the front-end applications or other systems that will be consuming the API. This could include internal operational tools, dashboard management interfaces, etc.
-
-- **MuleSoft API Layer**: The core of the system, where all the logic for interfacing with Tableau and Snowflake is implemented. This includes:
-  - **Authentication Service**: Manages client authentication and authorization.
-  - **Dashboard Management**: Handles requests related to dashboard data fetching and analysis.
-  - **User Management**: Manages user data fetching and manipulation.
-  - **Usage Statistics**: Processes and provides statistics on dashboard usage and user activity.
-
-- **Tableau Server**: This is where the Tableau dashboards are hosted. The API layer interacts with Tableau to retrieve dashboard data and metadata.
-
-- **Snowflake Database**: Used for storing detailed logs, user information, and other persistent data necessary for historical analysis and data lineage.
-
-This diagram provides a visual breakdown of how each component of the API interacts with others, supporting better understanding and communication among stakeholders involved in the project.
+  This POST request returns an access token which is then used in the Authorization header for subsequent API requests.
