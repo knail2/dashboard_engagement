@@ -1,0 +1,3 @@
+[submodule "multi-agent-frameworks/agentlite"]
+	path = multi-agent-frameworks/agentlite
+	url = https://github.com/SalesforceAIResearch/AgentLite.git
