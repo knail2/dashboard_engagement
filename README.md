@@ -115,3 +115,14 @@ The frontend interface for user interactions.
 The AI Engineer crafts prompts and initiates projects through the User Proxy Agent. The User Proxy Agent manages interactions with the Product Manager Agent, who breaks down the work and creates plans. These plans are sent to the Critique Agent for feedback, then finalized and passed to the LLM Coder Agent for coding. The LLM QA Agent reviews the code for quality, and the final code is sent back to the Product Manager Agent and then to the User Proxy Agent, who consolidates and presents the results back to the AI Engineer.
 
 The LLM Coder Agent interacts with Mulesoft by writing RAML for API authoring, retrieves data through Tableau, stores and queries data with Snowflake, and schedules tasks with Airflow. Mulesoft acts as the API Gateway connecting to both Tableau and Snowflake, while Airflow interacts with Mulesoft for running batch jobs to extract date from Tableau and store in a persistent database. Client Applications interface directly with Mulesoft for user interactions.
+
+### repo related details
+
+I am adding other repos for the MAFs inside this repo using git submodule.. specifically this is how I added it (this was to avoid multiple .git nested files which causes issues later during committing code
+
+example:
+```git submodule add https://github.com/someuser/external-library.git libs/external-library
+git submodule update --init --recursive
+git add .gitmodules libs/external-library
+git commit -m "Added external-library as a submodule"
+git push origin main```
