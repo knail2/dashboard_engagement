@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+.tableau_token
+.tableau_token_sandbox
 .tableau_creds
 .DS_Store
 __pycache__/
